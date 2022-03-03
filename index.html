@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset='utf-8' />
+  <title>NYC motor vehicle collisions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
+  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id='map'></div>
+    <div id='console'>
+      <h1>COVID-19 Vaccination Rate</h1>
+      <p>Data: <a href='https://github.com/nychealth/covid-vaccine-data/tree/main/people#coverage-by-modzcta-allagescsv'>Estimated percentage of NYC residents fully vaccinated</a> in NYC, March 2022</p>
+      <div class='session'>
+
+      <h2>Residents with at least 1 dose</h2>
+      <div class='row colors'>
+      </div>
+      <div class='row labels'>
+        <div class='label'>50%</div>
+        <div class='label'>60%</div>
+        <div class='label'>70%</div>
+        <div class='label'>80%</div>
+        <div class='label'>90%+</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
