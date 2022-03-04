@@ -15,10 +15,10 @@ map.on('load', () => {
   })
 
   map.addLayer({
-    id: 'covidvac-fill',
-    type: 'fill',
-    source: 'covidvac',
-    paint: {
+    'id': 'covidvac',
+    'type': 'fill',
+    'source': 'covidvac',
+    'paint': {
       'fill-color': [
         'interpolate',
         ['linear'],
@@ -36,3 +36,4 @@ map.on('load', () => {
       ]
     }
   })
+})
