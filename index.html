@@ -2,43 +2,113 @@
 <head>
   <meta charset='utf-8' />
   <title>COVID-19 Vaccination Rate</title>
+  <!-- add a favicon which will appear in browser tabs -->
+  <link rel="shortcut icon" href="./img/favicon.ico">
+
   <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
   <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+  <div id='parent-container'>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#2d4269;">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
 
-    <div id='map'></div>
-    <div id='console'>
-      <h1>COVID-19 Vaccination Rate</h1>
-      <p>Data: <a href='https://github.com/nychealth/covid-vaccine-data/tree/main/people#coverage-by-modzcta-allagescsv'>Estimated percentage of NYC residents fully vaccinated</a> in NYC, March 2022</p>
-      <div class='session'>
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">COVID-19 Vaccination Rate</a>
 
-      <h2>Residents with at least 1 dose</h2>
-      <div class='row colors'>
-      </div>
-      <div class='row labels'>
-        <div class='label'>50%</div>
-        <div class='label'>60%</div>
-        <div class='label'>70%</div>
-        <div class='label'>80%</div>
-        <div class='label'>90%+</div>
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <!-- Link -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+
+        </ul>
+
+        <!-- Icons -->
+        <ul class="navbar-nav d-flex flex-row me-1">
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+        </ul>
+
       </div>
     </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+  <div class='content-area'>
+    <div class='sidebar'>
+      <div class='sidebar-top'>
+        <h3>Welcome to the web map!</h3>
+        <p>This is an example of a more polished web map layout with a header and sidebar, google fonts, fontawesome icons, and some bootstrap UI components.</p>
+          </div>
+                <h1>COVID-19 Vaccination Rate</h1>
+                <p>Data: <a href='https://github.com/nychealth/covid-vaccine-data/tree/main/people#coverage-by-modzcta-allagescsv'>Estimated percentage of NYC residents fully vaccinated</a> in NYC, March 2022</p>
+                <h2>Residents with at least 1 dose</h2>
+                <div class='row colors'>
+                </div>
+                <div class='row labels'>
+                  <div class='label'>50%</div>
+                  <div class='label'>60%</div>
+                  <div class='label'>70%</div>
+                  <div class='label'>80%</div>
+                  <div class='label'>90%+</div>
+                </div>
+      </div>
+      <div id='map'></div>
+    </div>
 
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About this Project</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Here we can add plenty of info about the data, methodology, design inspiration, the issue at hand, or anything else.</p>
+            <p>You could also show this modal when the page first loads, as a splash screen of sorts.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <script src="https://kit.fontawesome.com/3a3d8feff0.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
   <script src="js/scripts.js"></script>
 </body>
 
