@@ -48,11 +48,11 @@ map.on('load', () => {
   map.addLayer({
     'id': 'covidvac-borders',
     'type': 'line',
-    'source': 'states',
+    'source': 'covidvac',
     'layout': {},
     'paint': {
         'line-color': '#aa5e79',
-        'line-width': 2
+        'line-width': 1
       }
     });
 
@@ -61,34 +61,7 @@ map.on('load', () => {
   map.on('mousemove', 'covidvac-fills', function(e) {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = 'pointer';
-
-    if (e.features.length > 0) {
-      if (hoveredMODZCTAId !== null) {
-        map.setFeatureState(
-          { source: 'covidvac', id: hoveredMODZCTAId },
-          { hover: false }
-      );
-    }
-
-      hoveredMODZCTAId = e.features[0].id;
-      map.setFeatureState(
-        { source: 'covidvac', id: hoveredMODZCTAId },
-        { hover: true }
-      );
-    }
-  });
-
-  // When the mouse leaves the state-fill layer, update the feature state of the
-  // previously hovered feature.
-  map.on('mouseleave', 'covidvac-fills', () => {
-    if (hoveredMODZCTAId !== null) {
-      map.setFeatureState(
-          { source: 'covidvac', id: hoveredMODZCTAId },
-          { hover: false }
-        );
-      }
-      hoveredMODZCTAId = null;
-    });
+});
 
     // Create a popup, but don't add it to the map yet.
     const popup = new mapboxgl.Popup({
@@ -96,11 +69,14 @@ map.on('load', () => {
     closeOnClick: false
     });
 
-    map.on('mouseenter', 'covidvac', (e) => {
+  map.on('mouseenter', 'covidvac-fills', (e) => {
 
-    // Copy coordinates array.
+    map.getCanvas().style.cursor = "pointer";
+
     const coordinates = e.features[0].geometry.coordinates.slice();
-    const description = e.features[0].properties.description;
+    const rate = e.features[0].properties['coverage-by-modzcta-allages_PERC_FULLY'];
+    const name = e.features[0].properties['coverage-by-modzcta-allages_NEIGHBORHOOD_NAME'];
+    const centroid = turf.centroid(e.features[0]);
 
     // Ensure that if the map is zoomed out such that multiple
     // copies of the feature are visible, the popup appears
@@ -108,21 +84,22 @@ map.on('load', () => {
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
-    
+
     //set up popup content
-    var popupContent = `
-      <h5>${coverage-by-modzcta-allages_NEIGHBORHOOD_NAME}</h5>
-      <p><strong>${coverage-by-modzcta-allages_PERC_FULLY}</strong> residents are fully vaccinated </p>`
+      var popupContent = `
+        <h5>${name}</h5>
+        <p><strong>${rate}</strong> residents are fully vaccinated </p>`;
+
 
     // Populate the popup and set its coordinates
     // based on the feature found.
-    popup.setLngLat(coordinates).setHTML(popupContent).addTo(map);
+    popup.setLngLat(centroid.geometry.coordinates).setHTML(popupContent).addTo(map);
     });
 
 
     // Change the cursor back to a pointer
     // when it leaves the states layer.
-    map.on('mouseleave', 'covidvac-fills', () => {
+    map.on('mouseleave', 'covidvac-fills', function () {
       map.getCanvas().style.cursor = '';
       popup.remove();
     });
