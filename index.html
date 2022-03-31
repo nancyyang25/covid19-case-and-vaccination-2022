@@ -57,11 +57,14 @@
   <div class='content-area'>
     <div class='sidebar'>
       <div class='sidebar-top'>
-        <h3>NYC Vaccinations by ZIP Code</h3>
-        <p>Data shows the percent of NYC residents who received at least one dose of COVID-19 vaccine, and the percent who are fully vaccinated by, Modified ZIP Code Tabulation Areas (MODZCTAs). MODZCTAs can provide better estimates of population size than ZIP codes because they combine census blocks that have smaller populations.</p>
+        <p>Data shows the percent of NYC residents who received at least one dose of COVID-19 vaccine, and the percent who are fully vaccinated by, Modified ZIP Code Tabulation Areas (MODZCTAs).</p>
+        <p>Knowing your community’s vaccination rates can help you take steps to maintain or improve them.</p>
+        </div>
+        <div class='sidebar-top'>
+        <h3>How to use the map</h3>
+        <p>Hover over a neighborhood to see its vaccination rate and the estimated total population.</p>
           </div>
                 <h1>COVID-19 Vaccination Rate</h1>
-                <p>Data: <a href='https://github.com/nychealth/covid-vaccine-data/tree/main/people#coverage-by-modzcta-allagescsv'>Estimated percentage of NYC residents fully vaccinated</a> in NYC, March 2022</p>
                 <h2>Residents with at least 1 dose</h2>
                 <div class='row colors'>
                 </div>
@@ -81,18 +84,19 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">About this Project</h5>
+            <h6 class="modal-title" id="exampleModalLabel">About this Project</h6>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <h5>Background</h5>
-            <p>New York City was the early epicenter of this pandemic in the United States because of its international connections and the local density of its social life. The virus spreads most intensely in households, workplaces, and neighborhoods.Safe and effective COVID-19 vaccines are now available in New York City to help us end the COVID-19 pandemic.</p>
+            <h6>Background</h6>
+            <p>New York City was the early epicenter of this pandemic in the United States because of its international connections and the local density of its social life. The virus spreads most intensely in households, workplaces, and neighborhoods. Safe and effective COVID-19 vaccines are now available in New York City to help us end the COVID-19 pandemic.</p>
 
             <p>The number of COVID-19 cases is creeping up after months of sustained decrease — with new infections concentrated in neighborhoods with low vaccination rates.</p>
-            <h5>Methodology</h5>
-            <p>New York City was the early epicenter of this pandemic in the United States because of its international connections and the local density of its social life. The virus spreads most intensely in households, workplaces, and neighborhoods.Safe and effective COVID-19 vaccines are now available in New York City to help us end the COVID-19 pandemic.</p>
+            <h6>Methodology</h6>
+            <p>Data include NYC residents who received immunizations administered in NYC, NYS, NJ or elsewhere and reported to the CIR by NYC providers, the New York State Immunization Information System (NYSIIS) or the New Jersey Immunization Information System (NJIIS). This map was created using public data and the Mapbox GL JS library. QGIS was used for joining MODZCTA shapefile and data cleaning.</p>
+            <p> MODZCTA: <a href='https://data.cityofnewyork.us/Health/Modified-Zip-Code-Tabulation-Areas-MODZCTA-/pri4-ifjk/data'> Shapefile for mapping data by Modified Zip Code Tabulation Areas </a> </p>
+            <p> Data: <a href='https://github.com/nychealth/covid-vaccine-data/tree/main/people#coverage-by-modzcta-allagescsv'> Estimated percentage of NYC residents fully vaccinated</a> in NYC, March 2022</p>
 
-            <p>The number of COVID-19 cases is creeping up after months of sustained decrease — with new infections concentrated in neighborhoods with low vaccination rates.</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>

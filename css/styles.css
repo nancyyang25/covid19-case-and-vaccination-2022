@@ -13,6 +13,13 @@ h2 {
   margin-bottom: 10px;
 }
 
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+
 a {
   text-decoration: none;
   color: #2dc4b2;
@@ -23,8 +30,9 @@ a {
 }
 
 .row {
-  height: 12px;
+  height: 10px;
   width: 100%;
+  margin-left: 0.5px;
 }
 
 .colors {
@@ -73,10 +81,11 @@ html, body {
 .sidebar-top {
   flex-grow: 1;
   border-bottom: 1px solid #5e5e5e;
+  padding-top: 10px;
 }
 
 .sidebar-bottom {
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .sidebar h3 {

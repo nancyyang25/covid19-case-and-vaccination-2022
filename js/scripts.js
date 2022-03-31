@@ -76,6 +76,7 @@ map.on('load', () => {
     const coordinates = e.features[0].geometry.coordinates.slice();
     const rate = e.features[0].properties['coverage-by-modzcta-allages_PERC_FULLY'];
     const name = e.features[0].properties['coverage-by-modzcta-allages_NEIGHBORHOOD_NAME'];
+    const pop = e.features[0].properties['pop_est'];
     const centroid = turf.centroid(e.features[0]);
 
     // Ensure that if the map is zoomed out such that multiple
@@ -88,7 +89,10 @@ map.on('load', () => {
     //set up popup content
       var popupContent = `
         <h5>${name}</h5>
-        <p><strong>${rate}</strong> residents are fully vaccinated </p>`;
+        <p>Estimated population: <strong>${pop}</strong></p>
+        <p><strong>${rate}</strong> residents are fully vaccinated </p>
+        `;
+
 
 
     // Populate the popup and set its coordinates
