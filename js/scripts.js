@@ -51,8 +51,8 @@ map.on('load', () => {
     'source': 'covidvac',
     'layout': {},
     'paint': {
-        'line-color': '#aa5e79',
-        'line-width': 1
+        'line-color': '#2d4269',
+        'line-width': 0.5
       }
     });
 
